@@ -1,0 +1,3 @@
+[submodule "Resources/WebsiteTemplate"]
+	path = Resources/WebsiteTemplate
+	url = https://github.com/ozobi/Data-Physics-User-Manual-Website.git
