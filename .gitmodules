@@ -1,3 +1,6 @@
 [submodule "Resources/WebsiteTemplate"]
 	path = Resources/WebsiteTemplate
 	url = https://github.com/ozobi/Data-Physics-User-Manual-Website.git
+[submodule "Resources/LaTeXTemplate"]
+	path = Resources/LaTeXTemplate
+	url = https://github.com/ozobi/Data-Physics-User-Manual-Document.git
