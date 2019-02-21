@@ -1,5 +1,5 @@
-Outputs/
-Contents/
+Outputs/*
+Contents/*
 Resources/_gen/
 Server/access_log
 Server/agent_log
