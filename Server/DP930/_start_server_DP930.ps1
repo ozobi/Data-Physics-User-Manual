@@ -17,7 +17,7 @@ Write-Host Starting server... -foregroundcolor Yellow
 Write-Host 
 
 try{
-	..\Resources\tinyweb-1-94\tiny.exe (Resolve-Path ..\Outputs\DP930_User_Manual) 1313 http://127.0.0.1
+	..\..\Resources\tinyweb-1-94\tiny.exe (Resolve-Path ..\..\Outputs\DP930_User_Manual) 1313 http://127.0.0.1
 } catch {
     Write-Host FAILED! -foregroundcolor Red
     Write-Host 
