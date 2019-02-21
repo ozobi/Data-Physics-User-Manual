@@ -1,0 +1,7 @@
+Outputs/
+Contents/
+Resources/_gen/
+Server/access_log
+Server/agent_log
+Server/error_log
+Server/referer_log
