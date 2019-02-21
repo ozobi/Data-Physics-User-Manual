@@ -1,21 +1,5 @@
-function PAUSE{
-    Write-Host "Paused! Press Enter to continue..." -foregroundcolor Red
-    Read-Host 
-}
-
-function TERMINATE{
-    Write-Host
-    Write-Host "Terminating program..." -foregroundcolor Red
-    Write-Host
-    PAUSE
-    
-    if (Test-Path .\_TEMP ) {
-    	Remove-Item -path .\_TEMP -recurse -force
-    }
-    
-    exit
-    break
-}
+# Onur Zobi - 02/2019
+#
 
 $folderOutput = "Outputs"
 $doc = "UserManual.md"
@@ -171,9 +155,7 @@ Write-Host Deleting temporary files and folders... -foregroundcolor Yellow
 Write-Host
 
 Remove-Item -Recurse -Force -Path $TEMP
-#Remove-Item -Force -Path $doc
+Remove-Item -Force -Path $doc
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
-
-PAUSE

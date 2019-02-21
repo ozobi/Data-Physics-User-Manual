@@ -1,21 +1,5 @@
-﻿function PAUSE{
-    Write-Host "Paused! Press Enter to continue..." -foregroundcolor Red
-    Read-Host 
-}
-
-function TERMINATE{
-    Write-Host
-    Write-Host "Terminating program..." -foregroundcolor Red
-    Write-Host
-    PAUSE
-    
-    if (Test-Path .\_TEMP ) {
-    	Remove-Item -path .\_TEMP -recurse -force
-    }
-    
-    exit
-    break
-}
+﻿# Onur Zobi - 02/2019
+#
 
 $folderOutput = "Outputs"
 $webResources = Resolve-Path ".\Resources\WebsiteTemplate"
@@ -69,7 +53,7 @@ Write-Host
 Write-Host Compiling with HUGO... -foregroundcolor Yellow
 Write-Host 
 
-Hugo --config $webResources\config.toml --contentDir $contentDir --layoutDir $webResources\layouts --destination .\$folderOutput\$folderName --cleanDestinationDir --gc
+Hugo --config $webResources\$configName --contentDir $contentDir --layoutDir $webResources\layouts --destination .\$folderOutput\$folderName --cleanDestinationDir --gc
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
@@ -84,5 +68,3 @@ Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
 
 Remove-Item -path .\_TEMP -recurse -force
-
-PAUSE
