@@ -9,3 +9,13 @@
 
 ### PDF
 - Pandoc - https://github.com/jgm/pandoc/releases/latest
+
+---
+
+## Instructions
+- Click Start and run `PowerShell.exe`
+- Type `Set-ExecutionPolicy Unrestricted`
+
+**Run these scripts from the Installation folder**
+- `0-install_chocolatey.ps1`
+- `1-install_dependencies.ps1`
