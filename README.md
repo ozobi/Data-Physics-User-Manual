@@ -16,10 +16,10 @@
 - Click Start and run `PowerShell.exe` as administrator
 - Type `Set-ExecutionPolicy Unrestricted`
 
-**Run these scripts in order from the Installation folder**
-- `0-install_chocolatey.ps1`
-- `1-install_dependencies.ps1`
-- `2-download-repository.ps1`
+  **Run these scripts in order from the Installation folder**
+  - `0-install_chocolatey.ps1`
+  - `1-install_dependencies.ps1`
+  - `2-download-repository.ps1`
 
 - Default installation folder is `C:\Data-Physics-User-Manual-Generator`.
 - Extract user manual contents package under `Contents` directory.
