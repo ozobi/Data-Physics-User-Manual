@@ -1,1 +1,1 @@
-choco install hugo pandoc -y
+choco install hugo pandoc git miktex -y
