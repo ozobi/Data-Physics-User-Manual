@@ -1,14 +1,15 @@
 # Data Physics User Manual Document and Website Generator
 
 ## Requirements
-- _For Windows 7_: Powershell v3+ - Windows6.1-KB2506143-x64 - https://www.microsoft.com/en-us/download/details.aspx?id=34595
+- _for Windows 7_: Powershell v3+ - Windows6.1-KB2506143-x64 - https://www.microsoft.com/en-us/download/details.aspx?id=34595
 
 ### WEB
-- Hugo - https://github.com/gohugoio/hugo/releases/latest
+- Hugo - https://gohugo.io/getting-started/installing/#less-technical-users - https://github.com/gohugoio/hugo/releases/latest
 - MathJax - https://github.com/mathjax/MathJax/releases/latest
 
 ### PDF
-- Pandoc - https://github.com/jgm/pandoc/releases/latest
+- MikTex - https://miktex.org/download - https://github.com/MiKTeX/miktex/releases
+- Pandoc - https://pandoc.org/installing.html - https://github.com/jgm/pandoc/releases/latest
 
 ---
 
@@ -22,5 +23,5 @@
   - `2-download-repository.ps1`
 
 - Default installation folder is `C:\Data-Physics-User-Manual-Generator`.
-- Extract user manual contents package under `Contents` directory.
+- Extract user manual package under `Contents` directory.
 - Run `Compile.ps1` to generate the website and/or the PDF.
