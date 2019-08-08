@@ -59,7 +59,6 @@ foreach ($file in $listRaw){
     # Add Weight
     $weight = Get-Content -Path $file.fullname | Select-String -Pattern "weight:\s*(\d+)"
     Add-Member -InputObject $file -MemberType NoteProperty -Name "Weight" -Value $weight.Matches[0].Groups[1].value
-    #Write-Host weight: $file.fullname
     
     # Add Depth
     $depth = $file.FullName.ToString().Split('\\').Count - $baseN
@@ -67,7 +66,8 @@ foreach ($file in $listRaw){
     $depth +=1
     }
     Add-Member -InputObject $file -MemberType NoteProperty -Name "Depth" -Value $depth
-    #Write-Host depth: $file.fullname
+
+    #Write-Host $file.fullname weight: $weight.Matches[0].Groups[1].value depth: $depth
 }
 
 Write-Host SUCCESS! -foregroundcolor Green
@@ -77,7 +77,7 @@ Write-Host
 Write-Host Sorting file list... -foregroundcolor Yellow
 Write-Host 
 
-$list = $listRaw | Sort-Object -Property Directory, Weight, Name
+$list = $listRaw | Sort-Object -Property Directory, Depth, Weight, Name
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
@@ -107,7 +107,7 @@ foreach ($file in $list){
     # Remove Header
     Write-Host Removing header... -foregroundcolor Gray
 
-    (Get-Content -Path $fileEdit.FullName -Raw) -Replace "(?m)^-{3}\s*(?:\w+:.+\r?\n?)+-{3}\s?\n^", "" | Set-Content -Path $fileEdit.FullName
+    (Get-Content -Path $fileEdit.FullName -Raw) -Replace "^\s*-{3}\s*[\w\W]*?-{3}", "" | Set-Content -Path $fileEdit.FullName
     
     # Edit Web tags
     Write-Host Editing WEB tags... -foregroundcolor Gray
@@ -122,7 +122,7 @@ foreach ($file in $list){
     # Add Title
     Write-Host Adding title... -foregroundcolor Gray
 
-    $writeTitle = "`#" * $file.Depth + " " + $title
+    $writeTitle = "`n"+"`#" * $file.Depth + " " + $title
     Add-Content $doc -Value $writeTitle
     
     # Merge File
