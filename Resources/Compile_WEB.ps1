@@ -1,8 +1,7 @@
 ﻿# Onur Zobi - 02/2019
 #
 
-$folderOutput = "Outputs"
-$webResources = Resolve-Path ".\Resources\WebsiteTemplate"
+$folderOutput = Resolve-Path ".\Outputs"
 
 # Create TEMP directory
 Write-Host Creating TEMP directory... -foregroundcolor Yellow
@@ -27,42 +26,37 @@ $imgDir = Resolve-Path $manDir\images
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
 
-# Copy content to TEMP folder
-Write-Host Copying content... -foregroundcolor Yellow
+# Copy files to TEMP folder
+Write-Host Copying files... -foregroundcolor Yellow
 Write-Host 
 
-Copy-Item -Recurse -Path $textDir -Destination $TEMP
-$contentDir = Resolve-Path $TEMP\text
+Copy-Item -Path $manDir\mkdocs.yml -Destination $TEMP
+
+Copy-Item -Recurse -Path $textDir -Destination $TEMP\docs
+$contentDir = Resolve-Path $TEMP\docs
+
+Copy-Item -Recurse -Path $imgDir -Destination $contentDir
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
 
-# Rename to .pandoc
-Write-Host Renaming content... -foregroundcolor Yellow
+# Edit Cross References
+Write-Host Editing references... -foregroundcolor Yellow
 Write-Host 
 
 $list = Get-ChildItem -Path $contentDir -Recurse -Filter *.md
 foreach($file in $list){
-    Rename-Item -Path $file.FullName -NewName ($file.Name.Split(".")[0]+".pandoc")
+    (Get-Content -Path $file.FullName -Raw) -Replace "\\label.*?\}","" -Replace " \\ref.*?\}","" | Set-Content -Path $file.FullName
 }
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
 
 # Compile
-Write-Host Compiling with HUGO... -foregroundcolor Yellow
+Write-Host Compiling with MKDocs Material... -foregroundcolor Yellow
 Write-Host 
 
-Hugo --config $webResources\$configName --contentDir $contentDir --layoutDir $webResources\layouts --destination .\$folderOutput\$folderName --cleanDestinationDir --gc
-
-Write-Host SUCCESS! -foregroundcolor Green
-Write-Host 
-
-# Copy images folder
-Write-Host Copying images... -foregroundcolor Yellow
-Write-Host 
-
-Copy-Item -Recurse -Force -Path $imgDir -Destination .\$folderOutput\$folderName
+mkdocs build --clean --config-file "$TEMP\mkdocs.yml" --site-dir "$folderOutput\$folderName"
 
 Write-Host SUCCESS! -foregroundcolor Green
 Write-Host 
