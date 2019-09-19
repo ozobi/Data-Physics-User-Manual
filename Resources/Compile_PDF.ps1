@@ -23,7 +23,7 @@ Write-Host
 $contentDir = Resolve-Path .\Contents\$folderName
 $textDir = Resolve-Path $contentDir\text
 $imgDir = Resolve-Path $contentDir\images
-$templateDir = Resolve-Path .\Resources\eisvogel.tex
+$templateDir = Resolve-Path .\Resources\Eisvogel\eisvogel.tex
 $header = Resolve-Path $contentDir\header.md
 
 Write-Host SUCCESS! -foregroundcolor Green
